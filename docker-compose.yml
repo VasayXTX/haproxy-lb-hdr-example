@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    build: ./app/.
+    ports:
+      - "3001-3002:8080"
+  haproxy:
+    image: haproxy:1.9
+    ports:
+      - "8081:80"
+      - "8082:32700"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
