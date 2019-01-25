@@ -1,10 +1,10 @@
-# Example of using HAProxy
+# Example of using HAProxy for balancing by custom header.
 
-### How to start
+### How to use
 
-    $ docker-compose -p lb up -d --scale app=2
-    $ curl localhost:8081
-    Hello from 125b0b6fdc5a%                                                                                                                                                             ╭─vasiliy@vasayxtx (HOME) ~/dev/haproxy-test
-    $ curl localhost:8081
-    Hello from 821ec77c395b%
+    $ docker-compose -p lb up -d --build --force-recreate --scale app=2
+    $ cd app && pipenv shell
+    $ python client.py -p 8081 -n 10 -s client1
+    $ python client.py -p 8081 -n 10 -s client2
+    $ exit
     $ docker-compose -p lb down
