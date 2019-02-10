@@ -1,4 +1,4 @@
-# Example of using HAProxy for balancing by HTTP header.
+# Example of using HAProxy for balancing HTTP requests by header.
 
 ### How to use
 
