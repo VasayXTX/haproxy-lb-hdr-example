@@ -1,3 +1,4 @@
+import logging
 import os
 import socket
 
@@ -11,7 +12,14 @@ async def hello_handle(request: web.Request):
     return resp
 
 
+async def healthz_handle(_: web.Request):
+    resp = web.Response(text="OK")
+    return resp
+
+
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     app = web.Application()
-    app.add_routes([web.get('/', hello_handle)])
+    app.add_routes([web.get('/hello', hello_handle)])
+    app.add_routes([web.get('/healthz', healthz_handle)])
     web.run_app(app, port=int(os.environ.get('PORT', '8080')))

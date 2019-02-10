@@ -29,7 +29,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    url = "http://localhost:{}".format(args.port)
+    url = "http://localhost:{}/hello".format(args.port)
     headers = {'X-SESSION-ID': args.sess_id}
     asyncio.run(perform_requests(args.number, url, headers))
 
